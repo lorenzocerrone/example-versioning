@@ -40,6 +40,6 @@ jobs:
             mike set-default stable
             echo "Deployed stable version"
           else
-            mike deploy --push --update-aliases dev
+            mike deploy --push --update-aliases --force dev
             echo "Deployed development version"
           fi
