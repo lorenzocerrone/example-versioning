@@ -34,7 +34,7 @@ jobs:
           VERSION=$(echo $GITHUB_REF | sed 's/refs\/tags\///' | sed 's/refs\/heads\///')
           echo "Deploying version $VERSION"
           if [[ $GITHUB_REF == refs/tags/* ]]; then
-            mike deploy --push --update-aliases $VERSION
+            mike deploy --push --update-aliases $VERSION latest
           else
             mike deploy --push latest
           fi
