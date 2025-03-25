@@ -2,7 +2,7 @@
 
 For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-update 0.4.1
+update 0.4.2
 
 ## Commands
 
