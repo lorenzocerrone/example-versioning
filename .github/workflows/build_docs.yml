@@ -38,7 +38,8 @@ jobs:
           if [[ $GITHUB_REF == refs/tags/* ]] && [[ $VERSION =~ ^[0-9.]+$ ]]; then
             mike deploy --push --update-aliases $VERSION stable
             mike set-default stable
-
+            echo "Deployed stable version"
           else
             mike deploy --push --update-aliases dev
+            echo "Deployed development version"
           fi
