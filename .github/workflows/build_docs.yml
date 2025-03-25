@@ -36,5 +36,5 @@ jobs:
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             mike deploy --push --update-aliases $VERSION latest
           else
-            mike deploy --push latest
+            mike deploy --push --update-aliases latest
           fi
