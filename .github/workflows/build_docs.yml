@@ -34,8 +34,8 @@ jobs:
           VERSION=$(echo $GITHUB_REF | sed 's/refs\/tags\///' | sed 's/refs\/heads\///')
           echo "Deploying version $VERSION"
           # Check if the version is a stable release
-          # Meaning it only contains numbers and dots
-          if [[ $GITHUB_REF == refs/tags/* ]] && [[ $VERSION =~ ^[0-9.]+$ ]]; then
+          # Meaning that starts with "v" and contains only numbers and dots
+          if [[ $GITHUB_REF == refs/tags/* ]] && [[ $VERSION =~ ^v[0-9.]+$ ]]; then
             mike deploy --push --update-aliases $VERSION stable
             mike set-default stable
             echo "Deployed stable version"
