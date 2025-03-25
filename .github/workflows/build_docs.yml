@@ -32,8 +32,14 @@ jobs:
       - name: Deploy docs
         run: |
           VERSION=$(echo $GITHUB_REF | sed 's/refs\/tags\///' | sed 's/refs\/heads\///')
+          # Check if the version follows semantic versioning
+          if [[ ! $VERSION =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*)?$ ]]; then
+            echo "Skipping deployment: version $VERSION is not a valid semantic version"
+            exit 0
+          fi
+          echo "Deploying version $VERSION"
           if [[ $GITHUB_REF == refs/tags/* ]]; then
-            mike deploy --push --update-aliases $VERSION latest
+            mike deploy --push --update-aliases $VERSION
           else
             mike deploy --push latest
           fi
