@@ -37,7 +37,7 @@ jobs:
           # Meaning that starts with "v" and contains only numbers and dots
           if [[ $GITHUB_REF == refs/tags/* ]] && [[ $VERSION =~ ^v[0-9.]+$ ]]; then
             mike deploy --push --update-aliases $VERSION stable
-            mike set-default stable
+            mike set-default --push stable
             echo "Deployed stable version"
           else
             mike deploy --push dev
